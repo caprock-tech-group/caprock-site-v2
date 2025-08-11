@@ -1,369 +1,491 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caprock Technology Group — Managed IT, Cybersecurity, & AI Support</title>
-  <meta name="description" content="Strategic managed IT services, cybersecurity, and AI-enhanced support for businesses in Amarillo and the Texas Panhandle." />
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caprock Technology Group</title>
+  <meta name="description" content="Strategic managed IT, cybersecurity, and Network HaaS for the Texas Panhandle. Fast response, clear communication, and an AI assistant that helps 24/7." />
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
-          colors: {
-            'navy': '#0c1426',
-            'navy-2': '#0f2344',
-            'cap-blue': '#0b6ea9',
-            'cap-teal': '#0a7e8c',
-            'cap-lime': '#a6ce39',
-            'cap-green': '#65a30d'
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Analytics (loads only after cookie consent) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CE6ER2YGR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    function initializeAnalytics(){ gtag('js', new Date()); gtag('config', 'G-5CE6ER2YGR'); }
-  </script>
-
   <style>
     :root {
-      --bg: #0c1426;
-      --panel: #0f2344;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #a6ce39;
-      --accent-2: #0b6ea9;
+      color-scheme: dark;
+      --brand-dark: #0E2A47;   /* navy (logo text) */
+      --brand-teal: #1F7A8C;   /* teal (logo shapes) */
+      --brand-gold: #D4C76C;   /* gold (Technology Group text) */
+      --brand-green: #6EBE44;  /* green peak */
     }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
-    .container-max { max-width: 1200px; }
-    .glass { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(6px); }
-    .hero-gradient { background: radial-gradient(1200px 500px at 80% -10%, rgba(166,206,57,.20), transparent 60%), radial-gradient(800px 400px at 10% -10%, rgba(11,110,169,.25), transparent 50%), linear-gradient(180deg, var(--bg), var(--panel)); }
-    .btn-primary { background: var(--accent); color: #0b0f19; }
-    .btn-primary:hover { filter: brightness(1.05); }
-    .btn-outline { border: 1px solid rgba(255,255,255,0.18); }
-    .card { background: #0e1729; border: 1px solid rgba(255,255,255,0.06); }
-    .muted { color: var(--muted); }
-    img.logo { height: 44px; width: auto; }
-    .shadow-neon { box-shadow: 0 0 0 transparent, 0 10px 30px rgba(11,110,169,.25); }
+    .brand-gradient { background-image: linear-gradient(90deg, var(--brand-dark), var(--brand-teal)); }
+    .brand-gradient-vert { background-image: linear-gradient(180deg, #0f172a, #0a0f1a); }
+    .brand-btn { background-image: linear-gradient(90deg, var(--brand-dark), var(--brand-teal)); }
+    .shadow-brand { box-shadow: 0 10px 30px rgba(31,122,140,0.35); }
   </style>
 </head>
-<body>
-  <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-[color:var(--panel)]/80 backdrop-blur-lg">
-    <div class="container-max mx-auto px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <img src="/assets/caprock-logo.png" alt="Caprock Technology Group" class="logo" />
-        <span class="sr-only">Caprock Technology Group</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#services" class="hover:text-white muted">Services</a>
-        <a href="#pricing" class="hover:text-white muted">Pricing</a>
-        <a href="#faq" class="hover:text-white muted">FAQ</a>
-        <a href="#contact" class="hover:text-white muted">Contact</a>
-        <a href="tel:806-316-5070" class="ml-4 font-semibold text-white">(806) 316-5070</a>
-      </nav>
-      <button id="mobileMenuBtn" class="md:hidden p-2 rounded border border-white/10 text-white" aria-label="open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 pb-4 bg-[color:var(--panel)]">
-      <nav class="flex flex-col gap-3 text-sm">
-        <a href="#services" class="py-1 muted hover:text-white">Services</a>
-        <a href="#pricing" class="py-1 muted hover:text-white">Pricing</a>
-        <a href="#faq" class="py-1 muted hover:text-white">FAQ</a>
-        <a href="#contact" class="py-1 muted hover:text-white">Contact</a>
-        <a href="tel:806-316-5070" class="py-2 text-white font-semibold">(806) 316-5070</a>
-      </nav>
+<body class="min-h-screen bg-neutral-950 text-neutral-100">
+  <!-- Top accent -->
+  <div class="h-1 w-full brand-gradient"></div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-neutral-950/60 border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="flex items-center gap-3 group">
+          <img src="assets/logo.png" alt="Caprock Technology Group" class="h-9 w-auto bg-white rounded-md p-1 shadow" />
+          <span class="sr-only">Caprock Technology Group</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-neutral-300">
+          <a href="#services" class="hover:text-white transition">Services</a>
+          <a href="#haas" class="hover:text-white transition">Network HaaS</a>
+          <a href="#pricing" class="hover:text-white transition">Pricing</a>
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden sm:inline-flex rounded-xl border border-[color:var(--brand-gold)] text-[color:var(--brand-gold)] px-4 py-2 text-sm hover:bg-[color:var(--brand-gold)]/10">Customer Portal</a>
+          <button onclick="openQuote()" class="inline-flex rounded-xl brand-btn px-4 py-2 text-sm font-semibold shadow-brand hover:brightness-110">Get a Quote</button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero-gradient">
-      <div class="container-max mx-auto px-6 py-20 md:py-28 text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-          Strategic IT that <span style="color: var(--accent)">accelerates</span> your business
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div aria-hidden class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-32 -left-32 h-64 w-64 rounded-full bg-[color:var(--brand-teal)]/20 blur-3xl"></div>
+      <div class="absolute -bottom-32 -right-32 h-64 w-64 rounded-full bg-[color:var(--brand-gold)]/20 blur-3xl"></div>
+      <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+    </div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-300">
+          <span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+          Texas Panhandle • 24/7 P1 Response
+        </span>
+        <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight">
+          Customer-Obsessed IT that just works.
         </h1>
-        <p class="mt-6 text-lg md:text-xl muted max-w-3xl mx-auto">
-          Managed IT, autonomous cybersecurity, and an AI assistant that handles tickets, sales inquiries, and customer chat — 24/7.
+        <p class="mt-4 text-neutral-300 text-lg leading-relaxed">
+          Caprock keeps your business fast, secure, and reliable—from proactive monitoring to network hardware-as-a-service. We acknowledge in 1 minute, triage in 15, and keep you updated—always.
         </p>
-        <div class="mt-10 flex justify-center gap-4">
-          <a href="#contact" class="btn-primary px-7 py-3 rounded-lg font-semibold shadow-neon">Become a Partner</a>
-          <a href="#pricing" class="btn-outline px-7 py-3 rounded-lg font-semibold text-white hover:bg-white/5">View Plans</a>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <button onclick="openQuote()" class="rounded-xl brand-btn px-5 py-3 font-semibold shadow-brand hover:brightness-110">Start in 24 hours</button>
+          <a href="#pricing" class="rounded-xl border border-white/10 px-5 py-3 font-semibold hover:bg-white/5">See pricing</a>
+        </div>
+        <div class="mt-6 flex items-center gap-6 text-sm text-neutral-400">
+          <div class="flex items-center gap-2">🔒 Security-first</div>
+          <div class="flex items-center gap-2">⚡ AI‑assisted helpdesk</div>
+          <div class="flex items-center gap-2">📶 Network HaaS</div>
         </div>
       </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-16">
-      <div class="container-max mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold">What We Deliver</h2>
-          <p class="mt-3 muted">Enterprise-grade foundations. Practical automation. Friendly support.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="card p-6 rounded-xl">
-            <div class="h-10 w-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(11,110,169,.15); color:#0b6ea9">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14h-2v-2h2v2zm0-4h-2V6h2v6z"/></svg>
-            </div>
-            <h3 class="font-bold mb-2">AI-Powered Support</h3>
-            <p class="muted">Your chatbot answers FAQs, routes tickets, and resolves common issues instantly.</p>
-          </div>
-          <div class="card p-6 rounded-xl">
-            <div class="h-10 w-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(10,126,140,.15); color:#0a7e8c">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l9 4v6c0 5-3.8 9.7-9 11-5.2-1.3-9-6-9-11V5l9-4z"/></svg>
-            </div>
-            <h3 class="font-bold mb-2">Cybersecurity</h3>
-            <p class="muted">Autonomous protection that stops ransomware and zero‑day threats in real time.</p>
-          </div>
-          <div class="card p-6 rounded-xl">
-            <div class="h-10 w-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(166,206,57,.18); color:#a6ce39">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v12H4z"/></svg>
-            </div>
-            <h3 class="font-bold mb-2">Hardware‑as‑a‑Service</h3>
-            <p class="muted">Routers, switches, and Wi‑Fi as a monthly op‑ex — installed, managed, replaced fast.</p>
-          </div>
-          <div class="card p-6 rounded-xl">
-            <div class="h-10 w-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,255,.08); color:#fff">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6l-8 4 8 4 8-4-8-4zm-8 6l8 4 8-4"/></svg>
-            </div>
-            <h3 class="font-bold mb-2">Strategic Consulting</h3>
-            <p class="muted">Quarterly reviews, roadmapping, and budgeting aligned to your growth goals.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="py-16">
-      <div class="container-max mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold">Transparent Pricing</h2>
-          <p class="mt-3 muted">Per-user plans that cover multiple devices. Simple, predictable, powerful.</p>
-        </div>
-
-        <h3 class="text-xl md:text-2xl font-bold text-center mb-6">Managed Service Plans</h3>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div class="card p-8 rounded-xl">
-            <h4 class="text-2xl font-bold">Secure Foundation</h4>
-            <div class="mt-2"><span class="text-4xl font-extrabold">$125</span><span class="muted"> / user / month</span></div>
-            <ul class="mt-6 space-y-3 muted">
-              <li>AI-powered system monitoring</li>
-              <li>Proactive health alerting</li>
-              <li>Automatic software & security updates</li>
-              <li>Advanced ransomware & virus protection</li>
-              <li class="font-semibold text-white mt-3">Service & Support</li>
-              <li>AI-powered service desk</li>
-              <li>Unlimited remote support</li>
-              <li>Fast response SLAs</li>
-            </ul>
-          </div>
-          <div class="p-1 rounded-2xl" style="background: linear-gradient(135deg, var(--accent), var(--accent-2));">
-            <div class="card p-8 rounded-xl h-full bg-[color:var(--panel)]">
-              <div class="text-xs font-bold tracking-wide uppercase text-black bg-[color:var(--accent)] inline-block px-3 py-1 rounded-full -mt-6 mb-4">Most Popular</div>
-              <h4 class="text-2xl font-bold" style="color: var(--accent)">Managed Growth</h4>
-              <div class="mt-2"><span class="text-4xl font-extrabold">$175</span><span class="muted"> / user / month</span></div>
-              <ul class="mt-6 space-y-3 muted">
-                <li>Everything in Foundation</li>
-                <li><strong class="text-white">Included on-site support</strong></li>
-                <li>Client health score reporting</li>
-                <li>Compliance reporting assistant</li>
-                <li><strong class="text-white">Quarterly IT strategy & budget reviews</strong></li>
-              </ul>
-            </div>
-          </div>
-          <div class="card p-8 rounded-xl">
-            <h4 class="text-2xl font-bold">Strategic Partnership</h4>
-            <div class="mt-2"><span class="text-4xl font-extrabold">$225</span><span class="muted"> / user / month</span></div>
-            <ul class="mt-6 space-y-3 muted">
-              <li>Everything in Growth</li>
-              <li><strong class="text-white">24/7 proactive threat hunting</strong></li>
-              <li><strong class="text-white">Annual tech roadmapping</strong></li>
-              <li>Emergency & after-hours support</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-16">
-          <h3 class="text-xl md:text-2xl font-bold text-center mb-6">Hardware-as-a-Service (HaaS)</h3>
-          <p class="text-center muted max-w-3xl mx-auto mb-8">All HaaS agreements include installation, management, and next-business-day replacement.</p>
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div class="card p-6 rounded-xl">
-              <h4 class="text-xl font-bold mb-2">Business Essentials</h4>
-              <ul class="space-y-2 muted">
-                <li class="flex justify-between"><span>Firewall / Router</span> <span class="font-semibold text-white">$30 / mo</span></li>
-                <li class="flex justify-between"><span>PoE+ Switch (24-Port)</span> <span class="font-semibold text-white">$45 / mo</span></li>
-                <li class="flex justify-between"><span>Wi‑Fi 6 Access Point</span> <span class="font-semibold text-white">$20 / mo</span></li>
-              </ul>
-            </div>
-            <div class="p-1 rounded-2xl" style="background: linear-gradient(135deg, var(--accent), var(--accent-2));">
-              <div class="card p-6 rounded-xl h-full bg-[color:var(--panel)]">
-                <div class="text-xs font-bold tracking-wide uppercase text-black bg-[color:var(--accent)] inline-block px-3 py-1 rounded-full -mt-6 mb-4">Most Popular</div>
-                <h4 class="text-xl font-bold mb-2" style="color: var(--accent)">Business Pro</h4>
-                <ul class="space-y-2 muted">
-                  <li class="flex justify-between"><span>Firewall / Router</span> <span class="font-semibold text-white">$50 / mo</span></li>
-                  <li class="flex justify-between"><span>PoE+ Switch (24-Port)</span> <span class="font-semibold text-white">$80 / mo</span></li>
-                  <li class="flex justify-between"><span>Wi‑Fi 6 Access Point</span> <span class="font-semibold text-white">$30 / mo</span></li>
-                </ul>
+      <div class="relative">
+        <div class="rounded-3xl border border-white/10 brand-gradient-vert p-4 shadow-2xl">
+          <div class="rounded-2xl border border-white/10 bg-neutral-950 p-6">
+            <div class="grid gap-4">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="rounded-xl border border-white/10 bg-neutral-900 p-4">
+                  <div class="text-xs text-neutral-400">CSAT</div>
+                  <div class="mt-1 text-2xl font-bold">4.8</div>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-neutral-900 p-4">
+                  <div class="text-xs text-neutral-400">MTTR</div>
+                  <div class="mt-1 text-2xl font-bold">1h 52m</div>
+                </div>
+                <div class="rounded-xl border border-white/10 bg-neutral-900 p-4">
+                  <div class="text-xs text-neutral-400">Tickets</div>
+                  <div class="mt-1 text-2xl font-bold">12</div>
+                </div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-neutral-900 p-4">
+                <div class="flex items-center justify-between">
+                  <div class="text-xs text-neutral-400">Live Incidents</div>
+                  <span class="text-xs rounded-full bg-[color:var(--brand-green)]/20 px-2 py-0.5 text-[color:var(--brand-green)]">Healthy</span>
+                </div>
+                <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
+                  <div class="rounded-lg border border-white/10 bg-white/5 p-3">
+                    <div class="text-neutral-300">Wi‑Fi Coverage</div>
+                    <div class="mt-1 h-2 w-full rounded bg-neutral-800">
+                      <div class="h-2 w-3/4 rounded brand-gradient"></div>
+                    </div>
+                  </div>
+                  <div class="rounded-lg border border-white/10 bg-white/5 p-3">
+                    <div class="text-neutral-300">Patch Compliance</div>
+                    <div class="mt-1 h-2 w-full rounded bg-neutral-800">
+                      <div class="h-2 w-11/12 rounded brand-gradient"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="card p-6 rounded-xl">
-              <h4 class="text-xl font-bold mb-2">Enterprise Performance</h4>
-              <ul class="space-y-2 muted">
-                <li class="flex justify-between"><span>Firewall / Router</span> <span class="font-semibold text-white">$75 / mo</span></li>
-                <li class="flex justify-between"><span>PoE+ Switch (24-Port)</span> <span class="font-semibold text-white">$120 / mo</span></li>
-                <li class="flex justify-between"><span>Wi‑Fi 6 Access Point</span> <span class="font-semibold text-white">$40 / mo</span></li>
-              </ul>
-            </div>
           </div>
         </div>
-
-        <div class="mt-12">
-          <h3 class="text-xl md:text-2xl font-bold text-center mb-6">Additional Services & Project Work</h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-4xl mx-auto">
-            <div class="card p-6 rounded-xl">
-              <h4 class="font-bold">Out-of-Scope Projects</h4>
-              <p class="text-3xl font-extrabold my-2">$175 <span class="text-lg font-normal muted">/ hour</span></p>
-              <p class="text-sm muted">For office moves, new rollouts, or major application deployments.</p>
-            </div>
-            <div class="card p-6 rounded-xl">
-              <h4 class="font-bold">Emergency After-Hours</h4>
-              <p class="text-3xl font-extrabold my-2">$250 <span class="text-lg font-normal muted">/ hour</span></p>
-              <p class="text-sm muted">For critical issues outside business hours for non‑Partnership clients.</p>
-            </div>
-            <div class="card p-6 rounded-xl">
-              <h4 class="font-bold">À La Carte Services</h4>
-              <p class="text-3xl font-extrabold my-2">Custom Quote</p>
-              <p class="text-sm muted">For specific needs like endpoint protection or backup only.</p>
-            </div>
+        <div class="absolute -bottom-4 -right-4 hidden sm:block">
+          <div class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-300 shadow">
+            Avg. P1 restore: 1h 52m
           </div>
-          <p class="text-center text-xs muted mt-6">* A one-time onboarding fee, equal to one month of service, applies to new clients.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-16">
-      <div class="container-max mx-auto px-6 max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">FAQ</h2>
+  <!-- Logos / stack -->
+  <section class="py-8 border-y border-white/10 bg-neutral-950/60">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-sm uppercase tracking-widest text-neutral-400">We manage the tools you rely on</p>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+        <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm">Microsoft 365</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm">Google Workspace</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm">Atera</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm">TP‑Link Omada</div>
+        <div class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm">SentinelOne</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl font-bold">Everything you need to stay online and secure</h2>
+        <p class="mt-2 text-neutral-300">Clear scope. Fast response. Evidence on every fix.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">📡</div>
+            <div>
+              <h4 class="font-semibold">Proactive Monitoring</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">Patch, RMM, and policy enforcement with real‑time alerts and auto‑remediation where safe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">💬</div>
+            <div>
+              <h4 class="font-semibold">Helpdesk that communicates</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">1‑minute acknowledgment, scheduled updates, and a single owner per ticket.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">🔒</div>
+            <div>
+              <h4 class="font-semibold">Security‑first</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">EDR, MFA, conditional access, and phishing simulations—with reports your team can read.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">📶</div>
+            <div>
+              <h4 class="font-semibold">Network HaaS (Omada)</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">Controller‑managed routers, switches, and Wi‑Fi with firmware, config backups, and SLAs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">☁️</div>
+            <div>
+              <h4 class="font-semibold">Backup & Continuity</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">Workstation & SaaS backups with recovery drills and documented RTO/RPO targets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="mt-1 h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">🧭</div>
+            <div>
+              <h4 class="font-semibold">vCIO & QBRs</h4>
+              <p class="mt-1 text-neutral-300 text-sm leading-relaxed">Quarterly business reviews that turn issues into roadmap items with cost/impact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HaaS highlight -->
+  <section id="haas" class="py-16 lg:py-24 bg-neutral-900/60 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h3 class="text-2xl font-bold">Hardware‑as‑a‑Service</h3>
+          <p class="mt-2 text-neutral-300">Enterprise‑grade networking without the capital expense. We install, manage, replace, and upgrade on a predictable monthly line item.</p>
+          <ul class="mt-6 space-y-3 text-neutral-300">
+            <li class="flex items-center gap-3">✔ Router + PoE switch + Wi‑Fi APs</li>
+            <li class="flex items-center gap-3">✔ Firmware & security updates handled</li>
+            <li class="flex items-center gap-3">✔ Guest & VLAN segmentation</li>
+            <li class="flex items-center gap-3">✔ Config backups & next‑day swap</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-3 text-neutral-300">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-sm text-neutral-400">Business Essentials</div>
+              <div class="text-2xl font-bold mt-1">$30 / $45 / $20</div>
+              <div class="text-xs text-neutral-500">Router / 24p PoE Switch / AP (per device per month)</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-sm text-neutral-400">Business Pro</div>
+              <div class="text-2xl font-bold mt-1">$50 / $80 / $30</div>
+              <div class="text-xs text-neutral-500">Router / 24p PoE Switch / AP (per device per month)</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div class="text-sm text-neutral-400">Enterprise</div>
+              <div class="text-2xl font-bold mt-1">$75 / $120 / $40</div>
+              <div class="text-xs text-neutral-500">Router / 24p PoE Switch / AP (per device per month)</div>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-neutral-950 p-6">
+          <div class="grid gap-4 text-sm">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-xl brand-gradient grid place-items-center border border-white/10">📶</div>
+              <div>
+                <div class="font-semibold">Caprock‑HQ</div>
+                <div class="text-neutral-400">Online • 7 APs • 2 switches • PoE OK</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                <div class="text-neutral-400">WAN Uptime</div>
+                <div class="text-lg font-semibold">99.98%</div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                <div class="text-neutral-400">Client Load</div>
+                <div class="text-lg font-semibold">Moderate</div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                <div class="text-neutral-400">Rogue SSID</div>
+                <div class="text-lg font-semibold">None</div>
+              </div>
+              <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+                <div class="text-neutral-400">Firmware Drift</div>
+                <div class="text-lg font-semibold">Aligned</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h3 class="text-3xl font-bold">Simple, transparent pricing</h3>
+        <p class="mt-2 text-neutral-300">Per user. Includes multiple devices. Onboarding fee = one month of service.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="relative rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-xl">
+          <div class="flex items-baseline justify-between">
+            <h4 class="text-xl font-semibold">Secure Foundation</h4>
+            <div class="text-3xl font-bold">$125<span class="text-sm font-normal text-neutral-400">/user/mo</span></div>
+          </div>
+          <p class="mt-1 text-sm text-neutral-400">Core technology & support</p>
+          <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+            <li class="flex items-center gap-2">✔ AI monitoring & alerting</li>
+            <li class="flex items-center gap-2">✔ Auto patching & updates</li>
+            <li class="flex items-center gap-2">✔ Advanced ransomware & AV</li>
+            <li class="flex items-center gap-2">✔ AI service desk + remote support</li>
+          </ul>
+          <button class="mt-6 w-full rounded-xl brand-btn px-4 py-2 font-semibold hover:brightness-110">Choose Foundation</button>
+        </div>
+        <div class="relative rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-xl ring-1 ring-[color:var(--brand-teal)]/60">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full brand-btn px-3 py-1 text-xs font-semibold shadow-brand">Most popular</div>
+          <div class="flex items-baseline justify-between">
+            <h4 class="text-xl font-semibold">Managed Growth</h4>
+            <div class="text-3xl font-bold">$175<span class="text-sm font-normal text-neutral-400">/user/mo</span></div>
+          </div>
+          <p class="mt-1 text-sm text-neutral-400">Everything in Foundation, plus</p>
+          <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+            <li class="flex items-center gap-2">✔ Included on‑site support</li>
+            <li class="flex items-center gap-2">✔ Client health score reporting</li>
+            <li class="flex items-center gap-2">✔ Compliance reporting assistant</li>
+            <li class="flex items-center gap-2">✔ Quarterly IT strategy & budget reviews</li>
+          </ul>
+          <button class="mt-6 w-full rounded-xl brand-btn px-4 py-2 font-semibold hover:brightness-110">Choose Growth</button>
+        </div>
+        <div class="relative rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-xl">
+          <div class="flex items-baseline justify-between">
+            <h4 class="text-xl font-semibold">Strategic Partnership</h4>
+            <div class="text-3xl font-bold">$225<span class="text-sm font-normal text-neutral-400">/user/mo</span></div>
+          </div>
+          <p class="mt-1 text-sm text-neutral-400">Mission‑critical operations</p>
+          <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+            <li class="flex items-center gap-2">✔ 24/7 proactive threat hunting</li>
+            <li class="flex items-center gap-2">✔ Annual tech roadmapping</li>
+            <li class="flex items-center gap-2">✔ Emergency & after‑hours support</li>
+          </ul>
+          <button class="mt-6 w-full rounded-xl brand-btn px-4 py-2 font-semibold hover:brightness-110">Choose Strategic</button>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-neutral-400">* A one‑time onboarding fee, equal to one month of service, applies to all new clients.</p>
+    </div>
+  </section>
+
+  <!-- About / How we work -->
+  <section id="about" class="py-16 lg:py-24 bg-neutral-900/60 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <h3 class="text-2xl font-bold">Relentlessly clear communication</h3>
+          <ol class="mt-4 space-y-3 text-neutral-300 list-decimal list-inside">
+            <li><span class="font-semibold">Acknowledge in 1 minute</span> with the next update time.</li>
+            <li><span class="font-semibold">Triage in 15 minutes</span>, escalate if blocked.</li>
+            <li><span class="font-semibold">Prove the fix</span> with screenshots, logs, or graphs.</li>
+            <li><span class="font-semibold">Prevent repeats</span> with a one‑line root cause and prevention step.</li>
+          </ol>
+          <div class="mt-6 rounded-2xl border border-[color:var(--brand-gold)]/30 bg-[color:var(--brand-gold)]/10 p-4 text-sm text-neutral-200">
+            “Give us a week and we’ll earn a year. If we don’t improve your uptime and satisfaction in 30 days, you don’t pay.”
+          </div>
+        </div>
         <div class="space-y-6">
-          <details class="glass rounded-lg p-5">
-            <summary class="font-semibold cursor-pointer">Do you support remote and on-site?</summary>
-            <p class="mt-2 muted">Yes. Remote is unlimited on all plans; on-site is included from Managed Growth and above.</p>
-          </details>
-          <details class="glass rounded-lg p-5">
-            <summary class="font-semibold cursor-pointer">Can you integrate with our tools?</summary>
-            <p class="mt-2 muted">We tie into your helpdesk, RMM, and cloud platforms. We’ll map automations during onboarding.</p>
-          </details>
-          <details class="glass rounded-lg p-5">
-            <summary class="font-semibold cursor-pointer">What’s the contract term?</summary>
-            <p class="mt-2 muted">Monthly with a 60‑day exit ramp. Hardware‑as‑a‑Service terms are coterminous with hardware.</p>
-          </details>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-sm text-neutral-400">CSAT</div>
+            <div class="mt-1 text-3xl font-bold">4.8/5</div>
+            <div class="mt-1 text-xs text-neutral-400">Rolling 90‑day</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-sm text-neutral-400">First‑Contact Resolution</div>
+            <div class="mt-1 text-3xl font-bold">52%</div>
+            <div class="mt-1 text-xs text-neutral-400">Helpdesk tickets</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div class="text-sm text-neutral-400">Mean Time to Restore</div>
+            <div class="mt-1 text-3xl font-bold">&lt; 2h</div>
+            <div class="mt-1 text-xs text-neutral-400">P1 incidents</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-16">
-      <div class="container-max mx-auto px-6">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-bold">Ready for a True Technology Partner?</h2>
-          <p class="mt-3 muted">Let’s talk about your goals and the right plan for your team.</p>
+  <!-- Testimonials -->
+  <section class="py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h3 class="text-2xl font-bold">What local teams say</h3>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <blockquote class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-neutral-200">“They communicate like clockwork and solved our Wi‑Fi headaches in a day.”</p>
+          <footer class="mt-4 text-sm text-neutral-400">— Restaurant Owner</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-neutral-200">“Onboarding two new hires took an hour instead of a week.”</p>
+          <footer class="mt-4 text-sm text-neutral-400">— Construction Firm</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p class="text-neutral-200">“They show their work. We trust their recommendations.”</p>
+          <footer class="mt-4 text-sm text-neutral-400">— Medical Office</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 lg:py-24 bg-neutral-900/60 border-y border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-2xl font-bold">Ready to talk?</h3>
+          <p class="mt-2 text-neutral-300">We’ll assess your environment, give you a clear plan, and start improving things within 24 hours.</p>
+          <ul class="mt-6 space-y-2 text-neutral-300">
+            <li class="flex items-center gap-3">📞 <span>(806) 316‑5070</span></li>
+            <li class="flex items-center gap-3">✉️ <span>info@caprocktech.com</span></li>
+            <li class="flex items-center gap-3">📍 <span>Amarillo, Texas 79110</span></li>
+          </ul>
+          <div class="mt-6 flex gap-3">
+            <button onclick="openQuote()" class="rounded-xl brand-btn px-5 py-3 font-semibold shadow-brand hover:brightness-110">Request a quote</button>
+            <a href="#pricing" class="rounded-xl border border-white/10 px-5 py-3 font-semibold hover:bg-white/5">Compare plans</a>
+          </div>
         </div>
-        <div class="glass max-w-xl mx-auto p-8 rounded-xl">
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <div class="rounded-3xl border border-white/10 bg-neutral-950 p-6">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="grid gap-3">
             <input type="hidden" name="form-name" value="contact" />
             <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-            <div class="grid grid-cols-1 gap-4">
-              <input class="bg-transparent border border-white/15 rounded px-4 py-3 text-white placeholder-gray-400" type="text" name="full-name" placeholder="Full name" required />
-              <input class="bg-transparent border border-white/15 rounded px-4 py-3 text-white placeholder-gray-400" type="email" name="email" placeholder="Email" required />
-              <input class="bg-transparent border border-white/15 rounded px-4 py-3 text-white placeholder-gray-400" type="text" name="phone" placeholder="Phone" />
-              <textarea class="bg-transparent border border-white/15 rounded px-4 py-3 text-white placeholder-gray-400" name="message" rows="4" placeholder="Tell us about your business goals..." required></textarea>
-              <button class="btn-primary px-6 py-3 rounded-lg font-semibold" type="submit">Request a Consultation</button>
+            <div class="grid gap-1">
+              <label class="text-sm text-neutral-300">Name</label>
+              <input name="full-name" class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 ring-offset-0 focus:ring-[color:var(--brand-teal)]" placeholder="Jane Doe" required />
             </div>
+            <div class="grid gap-1">
+              <label class="text-sm text-neutral-300">Email</label>
+              <input name="email" type="email" class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="jane@company.com" required />
+            </div>
+            <div class="grid gap-1">
+              <label class="text-sm text-neutral-300">How can we help?</label>
+              <textarea name="message" class="min-h-[120px] rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="Brief description of your request" required></textarea>
+            </div>
+            <button type="submit" class="rounded-xl brand-btn px-5 py-3 font-semibold shadow-brand hover:brightness-110">Send message</button>
           </form>
-          <div class="text-sm muted mt-6">
-            <p><strong class="text-white">Location:</strong> Amarillo, Texas 79110</p>
-            <p><strong class="text-white">Email:</strong> <a class="underline text-[color:var(--accent)]" href="mailto:info@caprocktech.com">info@caprocktech.com</a></p>
-            <p><strong class="text-white">Phone:</strong> <a class="underline text-[color:var(--accent)]" href="tel:806-316-5070">(806) 316-5070</a></p>
-          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="border-t border-white/10" style="background:var(--panel)">
-    <div class="container-max mx-auto px-6 py-10">
-      <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <img src="/assets/caprock-logo.png" alt="Caprock Technology Group" class="logo bg-white rounded p-1 inline-block" />
-          <p class="muted mt-3">Your strategic IT partner in the Texas Panhandle.</p>
-          <div class="flex gap-4 mt-4">
-            <a class="muted hover:text-white" href="https://www.facebook.com/caprocktech/" target="_blank" rel="noopener">Facebook</a>
-            <a class="muted hover:text-white" href="https://www.linkedin.com/company/caprocktech" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
+  <footer class="py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-neutral-400">
+        <p>© <span id="year"></span> Caprock Technology Group. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-neutral-200">Privacy</a>
+          <a href="#" class="hover:text-neutral-200">Terms</a>
+          <a href="#" class="hover:text-neutral-200">Status</a>
         </div>
-        <div>
-          <h3 class="uppercase tracking-wide text-sm muted">Company</h3>
-          <ul class="mt-3 space-y-2">
-            <li><a href="#services" class="muted hover:text-white">Services</a></li>
-            <li><a href="#pricing" class="muted hover:text-white">Pricing</a></li>
-            <li><a href="#contact" class="muted hover:text-white">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="uppercase tracking-wide text-sm muted">Contact</h3>
-          <p class="mt-3 muted">Amarillo, Texas 79110</p>
-          <p class="muted">info@caprocktech.com</p>
-          <p class="muted">(806) 316-5070</p>
-        </div>
-      </div>
-      <div class="mt-10 border-t border-white/10 pt-6 text-center muted text-sm">
-        © 2025 Caprock Technology Group. All rights reserved.
       </div>
     </div>
   </footer>
 
-  <!-- Cookie Consent -->
-  <div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-black/70 text-white p-4 flex items-center justify-center flex-wrap z-50" style="display:none;">
-    <p class="flex-grow text-center md:text-left mb-2 md:mb-0">This website uses cookies to ensure you get the best experience.</p>
-    <button id="cookie-consent-button" class="px-4 py-2 rounded-lg font-bold" style="background:var(--accent); color:#0b0f19">Accept</button>
+  <!-- Quote Modal -->
+  <div id="quote" class="hidden fixed inset-0 z-50 grid place-items-center bg-black/70 p-4">
+    <div class="w-full max-w-lg rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-2xl">
+      <div class="flex items-start justify-between">
+        <div>
+          <h4 class="text-xl font-semibold">Request a Quote</h4>
+          <p class="mt-1 text-sm text-neutral-400">Tell us a bit about your environment and we’ll respond within one business hour.</p>
+        </div>
+        <button onclick="closeQuote()" class="rounded-lg p-2 hover:bg-white/5" aria-label="Close">✕</button>
+      </div>
+      <form class="mt-4 grid gap-3">
+        <div class="grid gap-1">
+          <label class="text-sm text-neutral-300">Your name</label>
+          <input class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="Jane Doe" />
+        </div>
+        <div class="grid gap-1">
+          <label class="text-sm text-neutral-300">Work email</label>
+          <input type="email" class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="jane@company.com" />
+        </div>
+        <div class="grid gap-1">
+          <label class="text-sm text-neutral-300">Company</label>
+          <input class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="Company LLC" />
+        </div>
+        <div class="grid gap-1">
+          <label class="text-sm text-neutral-300">Users & sites</label>
+          <input class="rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="25 users, 2 sites" />
+        </div>
+        <div class="grid gap-1">
+          <label class="text-sm text-neutral-300">What’s not working today?</label>
+          <textarea class="min-h-[100px] rounded-xl bg-white/5 px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]" placeholder="Briefly describe your pain points"></textarea>
+        </div>
+        <button type="button" onclick="closeQuote()" class="mt-2 rounded-xl brand-btn px-5 py-3 font-semibold shadow-brand hover:brightness-110">Submit</button>
+      </form>
+    </div>
   </div>
 
-  <script>
-    const mmBtn = document.getElementById('mobileMenuBtn');
-    const mm = document.getElementById('mobileMenu');
-    mmBtn?.addEventListener('click', ()=> mm.classList.toggle('hidden'));
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const banner = document.getElementById('cookie-consent-banner');
-      const accept = document.getElementById('cookie-consent-button');
-      if (localStorage.getItem('cookieConsent') === 'true') {
-        if (typeof initializeAnalytics === 'function') initializeAnalytics();
-      } else {
-        banner.style.display = 'flex';
-      }
-      accept.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'true');
-        banner.style.display = 'none';
-        if (typeof initializeAnalytics === 'function') initializeAnalytics();
-      });
-    });
-  </script>
+  <!-- Floating CTA -->
+  <button onclick="openQuote()" class="fixed bottom-6 right-6 rounded-2xl brand-btn px-5 py-3 font-semibold shadow-brand hover:brightness-110">
+    Get Started
+  </button>
 
   <!-- Chat widget -->
   <script src="/chat-widget.js" defer></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function openQuote(){ document.getElementById('quote').classList.remove('hidden'); }
+    function closeQuote(){ document.getElementById('quote').classList.add('hidden'); }
+  </script>
 </body>
 </html>
