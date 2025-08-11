@@ -1,5 +1,3 @@
-// Netlify Function: proxies site requests to your private API
-// Reads BACKEND_URL and BACKEND_API_KEY from Netlify environment variables.
 exports.handler = async (event) => {
   if (event.httpMethod === "OPTIONS") {
     return { statusCode: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST,OPTIONS" } };
