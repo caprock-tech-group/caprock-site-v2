@@ -1,26 +1,38 @@
-exports.handler = async (event) => {
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST,OPTIONS" } };
-  }
+// netlify/functions/chat.js
+export async function handler(event) {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: JSON.stringify({ error: "Method Not Allowed" }) };
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
+
   try {
-    const body = JSON.parse(event.body || "{}");
-    const backend = process.env.BACKEND_URL;
-    const apikey  = process.env.BACKEND_API_KEY;
-    if (!backend || !apikey) {
-      return { statusCode: 500, body: JSON.stringify({ error: "Missing BACKEND_URL or BACKEND_API_KEY" }) };
+    const apiKey = process.env.CAPROCK_API_KEY; // set in Netlify env
+    if (!apiKey) {
+      return { statusCode: 500, body: "Missing CAPROCK_API_KEY" };
     }
-    const url = backend.replace(/\/$/, "") + "/chat";
-    const r = await fetch(url, {
+
+    const body = JSON.parse(event.body || "{}");
+    const payload = {
+      prompt: body.prompt ?? "",
+      max_steps: body.max_steps ?? 3,
+      temperature: body.temperature ?? 0.3,
+    };
+
+    const r = await fetch("https://api.caprocktech.com/chat", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": apikey },
-      body: JSON.stringify(body)
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": apiKey,
+      },
+      body: JSON.stringify(payload),
     });
+
     const text = await r.text();
-    return { statusCode: r.status, body: text, headers: { "Content-Type": "application/json" } };
-  } catch (e) {
-    return { statusCode: 500, body: JSON.stringify({ error: String(e) }) };
+    return {
+      statusCode: r.status,
+      headers: { "content-type": r.headers.get("content-type") || "application/json" },
+      body: text,
+    };
+  } catch (err) {
+    return { statusCode: 500, body: JSON.stringify({ error: String(err) }) };
   }
-};
+}
