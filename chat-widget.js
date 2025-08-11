@@ -1,18 +1,18 @@
 (function(){
   const css = `
-  .caprock-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;border:none;border-radius:9999px;padding:12px 16px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.15);background:#0ea5e9;color:#fff}
-  .caprock-chat-panel{position:fixed;right:20px;bottom:80px;width:340px;max-height:70vh;background:#fff;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden;z-index:9999;border:1px solid #eee}
-  .caprock-chat-header{padding:12px 14px;font-weight:700;background:#111;color:#fff}
-  .caprock-chat-body{padding:12px;overflow:auto;gap:8px;display:flex;flex-direction:column}
-  .caprock-msg{padding:10px 12px;border-radius:12px;background:#f5f5f5;word-break:break-word}
-  .caprock-msg.me{background:#e8f0ff;align-self:flex-end}
-  .caprock-chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid #eee}
-  .caprock-chat-input input{flex:1;padding:10px;border-radius:10px;border:1px solid #ddd}
-  .caprock-chat-input button{padding:10px 14px;border-radius:10px;border:none;font-weight:600;cursor:pointer;background:#111;color:#fff}
+  .caprock-chat-btn{position:fixed;right:20px;bottom:20px;z-index:9999;border:none;border-radius:9999px;padding:12px 16px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35);background:#a6ce39;color:#0b0f19}
+  .caprock-chat-panel{position:fixed;right:20px;bottom:80px;width:360px;max-height:70vh;background:#0f2344;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.45);display:none;flex-direction:column;overflow:hidden;z-index:9999;border:1px solid rgba(255,255,255,.08)}
+  .caprock-chat-header{padding:12px 14px;font-weight:800;background:#0b0f19;color:#fff;border-bottom:1px solid rgba(255,255,255,.06)}
+  .caprock-chat-body{padding:12px;overflow:auto;gap:8px;display:flex;flex-direction:column;background:linear-gradient(180deg, rgba(11,110,169,.12), transparent)}
+  .caprock-msg{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);color:#e5e7eb;word-break:break-word;border:1px solid rgba(255,255,255,.08)}
+  .caprock-msg.me{background:rgba(166,206,57,.15);color:#eaffb0;align-self:flex-end;border-color:rgba(166,206,57,.35)}
+  .caprock-chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,.06);background:#0f2344}
+  .caprock-chat-input input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#e5e7eb}
+  .caprock-chat-input button{padding:10px 14px;border-radius:10px;border:none;font-weight:700;cursor:pointer;background:#a6ce39;color:#0b0f19}
   `;
   const style=document.createElement('style'); style.textContent=css; document.head.appendChild(style);
 
-  const btn=document.createElement('button'); btn.className='caprock-chat-btn'; btn.textContent='💬 Chat with us';
+  const btn=document.createElement('button'); btn.className='caprock-chat-btn'; btn.textContent='Chat with us';
   const panel=document.createElement('div'); panel.className='caprock-chat-panel'; panel.id='caprockChat';
   panel.innerHTML=`
     <div class="caprock-chat-header">Caprock Assistant</div>
